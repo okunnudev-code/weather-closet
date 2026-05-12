@@ -1,65 +1,138 @@
-import Image from "next/image";
+import Image from 'next/image';
+import FaqAccordion from './components/FaqAccordion';
+import { HeroAuthButton } from './components/LandingAuthButtons';
+import LandingNav from './components/LandingNav';
+
+const reviews = [
+  {
+    text: 'This app saves me so much time in the morning. I love that it uses clothes I already own and actually considers the weather.',
+    name: 'Alex M.',
+  },
+  {
+    text: 'Finally stopped overdressing and underdressing. The weather-based outfit suggestions are surprisingly accurate.',
+    name: 'Sophie L.',
+  },
+  {
+    text: "Uploading my closet was easy, and now I don't stress about what to wear. Simple, smart, and super useful",
+    name: 'Jordan K.',
+  },
+];
+
+const plans = [
+  {
+    name: 'Starter',
+    price: '£2.99/mo',
+    features: ['Digital closet', '50 Image Upload', 'Unlimited daily outfits', 'Early access features'],
+  },
+  {
+    name: 'Pro',
+    price: '£6.99/mo',
+    features: ['Digital closet', '300 Image Upload', 'Unlimited daily outfits', 'Early access features'],
+    highlight: true,
+  },
+  {
+    name: 'Expert',
+    price: '£10.99/mo',
+    features: ['Digital closet', '900 Image Upload', 'Unlimited daily outfits', 'Early access features'],
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div style={{ background: 'var(--bg-white)' }}>
+      {/* Navbar */}
+      <div className="container">
+        <LandingNav />
+      </div>
+
+      {/* Hero */}
+      <div className="container">
+        <section className="hero">
+          <div className="hero-content">
+            <h1>Outfits That Match The Weather</h1>
+            <div className="hero-btns">
+              <HeroAuthButton />
+              <a href="#reviews" className="btn btn-secondary">Reviews</a>
+            </div>
+          </div>
+          <div className="hero-images">
+            <div className="hero-img-1">
+              <Image src="/hero-2.png" alt="Woman in autumn park" fill style={{ objectFit: 'cover', borderRadius: '12px' }} />
+            </div>
+            <div className="hero-img-2">
+              <Image src="/hero-1.png" alt="Woman in rain" fill style={{ objectFit: 'cover', borderRadius: '12px' }} />
+            </div>
+          </div>
+        </section>
+      </div>
+
+      {/* How it Works */}
+      <section className="section-padding" style={{ background: 'var(--bg-white)' }}>
+        <div className="container">
+          <h2 className="center-text" style={{ fontSize: '2.5rem' }}>How it Works</h2>
+          <div className="how-it-works-grid">
+            <div className="card">
+              <h3>Upload Your Closet</h3>
+              <p>Add photos of your clothes you already own to build your digital wardrobe.</p>
+            </div>
+            <div className="card">
+              <h3>Get Outfit Recommendations</h3>
+              <p>We check the weather and provide outfit ideas from your clothes that fit the current weather.</p>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Reviews */}
+      <section id="reviews" className="section-padding">
+        <div className="container">
+          <h2 className="center-text" style={{ fontSize: '2.5rem' }}>Reviews</h2>
+          <div className="reviews-grid">
+            {reviews.map((r, i) => (
+              <div key={i} className="review-card">
+                <p>{r.text}</p>
+                <span className="review-name">{r.name}</span>
+              </div>
+            ))}
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* FAQ */}
+      <section id="faq" className="section-padding">
+        <div className="container">
+          <h2 className="center-text" style={{ fontSize: '2.5rem' }}>Faq</h2>
+          <FaqAccordion />
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section id="pricing" className="section-padding">
+        <div className="container">
+          <h2 className="center-text" style={{ fontSize: '2.5rem' }}>Pricing</h2>
+          <div className="pricing-grid">
+            {plans.map((plan) => (
+              <div key={plan.name} className={`pricing-card${plan.highlight ? ' pro' : ''}`}>
+                <h3 style={{ fontSize: '1.5rem' }}>{plan.name}</h3>
+                <div className="price">{plan.price}</div>
+                <ul className="pricing-features">
+                  {plan.features.map((f) => (
+                    <li key={f}>{f}</li>
+                  ))}
+                </ul>
+                <a href="/auth" className="btn btn-primary" style={{ marginTop: 'auto' }}>Get WC</a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="footer">
+        <div className="container center-text">
+          <p style={{ color: 'var(--text-muted)' }}>© 2026 Weather Closet All Rights Reserved</p>
+        </div>
+      </footer>
     </div>
   );
 }
