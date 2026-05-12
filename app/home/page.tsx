@@ -222,7 +222,7 @@ export default function HomePage() {
         )}
         {!outfitLoading && outfitError && (
           <div style={{ color: '#c0392b', fontSize: '0.9rem', padding: '0.5rem 0' }}>
-            Could not load outfit — AI rate limit reached. Try again in a minute.
+            Could not load outfit recommendation. Try refreshing.
           </div>
         )}
         {!outfitLoading && !outfitError && !hasClosetItems && (
