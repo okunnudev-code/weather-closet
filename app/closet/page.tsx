@@ -14,10 +14,10 @@ export default function ClosetPage() {
 
   useEffect(() => {
     if (!userId) return;
-    getItems(userId).then(data => {
-      setItems(data);
-      setLoading(false);
-    });
+    getItems(userId)
+      .then(data => setItems(data))
+      .catch(console.error)
+      .finally(() => setLoading(false));
   }, [userId]);
 
   return (
