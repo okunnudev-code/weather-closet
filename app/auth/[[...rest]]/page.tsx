@@ -43,6 +43,7 @@ export default async function AuthPage({ params }: { params: Promise<{ rest?: st
             routing="path"
             path="/auth/sign-up"
             signInUrl="/auth"
+            forceRedirectUrl="/home"
             appearance={{
               elements: {
                 rootBox: { width: '100%' },
@@ -151,6 +152,7 @@ export default async function AuthPage({ params }: { params: Promise<{ rest?: st
             routing="path"
             path="/auth"
             signUpUrl="/auth/sign-up"
+            forceRedirectUrl="/home"
             appearance={{
               elements: {
                 rootBox: { width: '100%' },
